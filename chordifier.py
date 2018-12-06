@@ -69,9 +69,9 @@ else:
         write.write(lineToHtml(lines[i]))
     write.write("');\n")
     write.write("$chords = [")
-    for i in range(0, len(chords)-1):
+    for i in range(0, len(chords)):
         write.write("'"+chords[i]+"',")
-    write.write("'"+chords[len(chords)-1]+"'")
-    write.write("];\n?>")
+    #write.write("'"+chords[len(chords)-1]+"'")
+    write.write("'\n'];\n?>")
     write.flush()
     write.close()
