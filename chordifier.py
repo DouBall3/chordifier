@@ -64,6 +64,9 @@ else:
     write.write("<?php\narray_push($names,\""+lines[0]+"\");\narray_push($songs,'")
     for i in range(1, len(lines)):
         write.write(lineToHtml(lines[i]))
-    write.write("');\n?>")
+    write.write("');\n")
+    for chord in chords:
+        write.write("array_push($chords, '"+chord+"');\n")
+    write.write("?>")
     write.flush()
     write.close()
