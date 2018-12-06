@@ -37,6 +37,9 @@ def lineToHtml(line):
         elif (line[j] in numbers) and (j < (len(line) - 1)) and (line[j+1] == ':'):
             newLine += "<br /><span class=\"verse\">" + line[j] + "</span>"
             j += 1
+        elif (line[i] == '-') and (line[i+1] == '(') and (line[i+2] == ')') and (line[i+3] == '-'):
+            newLine += '<br /><span class="verse">~mezihra~</span>'
+            j += 3
         elif (line[j] == 'B') and (j < (len(line) - 1)) and (line[j+1] == ':'):
             newLine += "<br /><span class=\"verse\">Bridge:</span>"
             j += 1
