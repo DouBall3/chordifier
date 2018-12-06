@@ -72,6 +72,6 @@ else:
     for i in range(0, len(chords)-1):
         write.write("'"+chords[i]+"',")
     write.write("'"+chords[len(chords)-1]+"'")
-    write.write("]);\n?>")
+    write.write("];\n?>")
     write.flush()
     write.close()
