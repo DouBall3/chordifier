@@ -12,17 +12,20 @@ def lineToHtml(line):
 
         if line[j] == '|':
             if Bool:
-                newLine += "</sup>"
+                newLine += "</sup> "
                 if b not in chords:
-                    chords.append(b)
+                    chords.append(b);
+                    b = ""
             else:
                 newLine += "<sup class=\"chord\">"
+                b = ""
             Bool = not Bool
         elif line[j] == '\\':
             if Bool:
                 newLine += "</sup>"
                 if b not in chords:
                     chords.append(b)
+                    b = ""
                 Bool = False;
         elif line[j] == '\n':
             newLine += "<br />"
@@ -65,8 +68,10 @@ else:
     for i in range(1, len(lines)):
         write.write(lineToHtml(lines[i]))
     write.write("');\n")
-    for chord in chords:
-        write.write("array_push($chords, '"+chord+"');\n")
-    write.write("?>")
+    write.write("array_push($chords, [")
+    for i in range(0, len(chords)-1):
+        write.write("'"+chords[i]+"',")
+    write.write("'"+chords[len(chords)-1]+"'")
+    write.write("]);\n?>")
     write.flush()
     write.close()
