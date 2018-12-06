@@ -60,7 +60,7 @@ else:
     write = open(argv[2], "w", encoding="utf8")
     write.write("<?php\narray_push($names,\""+lines[0]+"\");\narray_push($songs,'")
     for i in range(1, len(lines)):
-        write.write(lineToHtml(lines[i]) + "<br />")
+        write.write(lineToHtml(lines[i]))
     write.write("');\n?>")
     write.flush()
     write.close()
