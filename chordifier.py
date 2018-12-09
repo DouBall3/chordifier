@@ -8,8 +8,12 @@ def lineToHtml(line):
     newLine = ""
     b = ""
     Bool = not True
+    nepis = 0
     for j in range(0, len(line)):
 
+        if nepis > 0:
+            nepis-=1
+            continue
         if line[j] == '|':
             if Bool:
                 newLine += "</sup> "
@@ -42,8 +46,7 @@ def lineToHtml(line):
             j += 1
         elif (line[j] == '-') and (line[j+1] == '(') and (line[j+2] == ')') and (line[j+3] == '-'):
             newLine += '<br /><span class="verse">~mezihra~</span>'
-            j += 3
-            pass
+            nepis = 3
         elif (line[j] == 'B') and (j < (len(line) - 1)) and (line[j+1] == ':'):
             newLine += "<br /><span class=\"verse\">Bridge:</span>"
             j += 1
