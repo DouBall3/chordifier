@@ -50,6 +50,9 @@ def lineToHtml(line):
         elif (line[j] == 'B') and (j < (len(line) - 1)) and (line[j+1] == ':'):
             newLine += "<br /><span class=\"verse\">Bridge:</span>"
             j += 1
+        elif line[j] == "'":
+            newLine += "\\'"
+            j += 1
         else:
             if Bool:
                 b += line[j]
