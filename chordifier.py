@@ -41,7 +41,7 @@ def lineToHtml(line):
                 newLine += "<br /><span class=\"verse\">R</span>"
         elif (line[j] == 'r') and (j < (len(line) - 1)) and (line[j+1] == ':'):
             newLine += "<br /><span class=\"verse\">Rec:</span>"
-        elif (line[j] in numbers) and (j < (len(line) - 1)) and (line[j+1] == ':'):
+        elif (line[j] in numbers) and (j < (len(line) - 1)) and (line[j+1] == '.'):
             newLine += "<br /><span class=\"verse\">" + line[j] + "</span>"
             j += 1
         elif (line[j] == '-') and (line[j+1] == '(') and (line[j+2] == ')') and (line[j+3] == '-'):
@@ -59,7 +59,6 @@ def lineToHtml(line):
             newLine += line[j]
     if Bool:
         newLine += "</sup>"
-        print(newLine)
     return newLine
 
 
@@ -71,8 +70,8 @@ else:
     lines = read.readlines()
     read.close()
     write = open(argv[2], "w", encoding="utf8")
-    write.write("<?php\narray_push($names,\""+lines[0]+"\");\narray_push($songs,'")
-    for i in range(1, len(lines)):
+    write.write("<?php\narray_push($names,\""+lines[0]+"\");\narray_push($authors,\""+lines[1]+"\");\narray_push($songs,'")
+    for i in range(2, len(lines)):
         write.write(lineToHtml(lines[i]))
     write.write("');\n")
     write.write("$chords = [")
