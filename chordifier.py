@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 from sys import argv
 chords = []
 
@@ -65,7 +65,7 @@ def lineToHtml(line):
 
 if len(argv) != 3:
     print("Usage: chordifier <in> <out>\n")
-    exit(1)
+    sys.exit(1)
 else:
     read = open(argv[1], "r", encoding="utf8")
     lines = read.readlines()
