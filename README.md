@@ -1,4 +1,4 @@
-# # Chordifier
+# Chordifier
 ###### Chord translator for akordovnik
 
 Chordifier is simple python script which takes input file in `*.chord` format and translate it to php file suitable for akordovnik application.
